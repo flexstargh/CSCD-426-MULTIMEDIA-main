@@ -1,0 +1,40 @@
+@use '../base/colors' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.header__top-nav {
+    &-drop-down {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        @include size(100%, 0);
+        background: $clr-white;
+        color: $clr-gray;
+        border-top-color: transparent;
+        border-bottom-left-radius: rem(2);
+        border-bottom-right-radius: rem(2);
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(rem(10));
+        cursor: pointer;
+        
+        &-item {
+            padding: .2em 0;
+            @include hover-right-shift;
+        }
+    }
+    
+    &-item:nth-child(1):hover,
+    &-item:nth-child(2):hover{
+        .header__top-nav-drop-down {
+            height: auto;
+            padding: 1em;
+            transition: transform .3s cubic-bezier(0, 0.85, 0.74, 1), opacity .3s cubic-bezier(0, 0.85, 0.74, 1);
+            transform: translateY(0);
+            opacity: 1;
+            border: 2px solid rgba($clr-gray, .15 );
+            z-index: 2;
+        }
+    }
+}

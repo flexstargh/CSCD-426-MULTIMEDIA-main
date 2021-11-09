@@ -1,0 +1,69 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+@use './colors' as *;
+@use '../abstracts/mixins' as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  background: $clr-bg-light;
+  overflow-x: hidden;
+  padding-bottom: 3.5rem; // modify this number - needed because bottom nav covers part of content 
+
+  @include mq(medium) {
+    padding-bottom: 0;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $clr-black;
+}
+
+img, iframe {
+  max-width: 100%;
+}
+
+button, input{
+  background: none;
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+ul, ol {
+  list-style-type: none;
+}
+
+// Remove all animations and transitions for users
+// who have it turned off in system settings
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-delay: -1ms !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        background-attachment: initial !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+    }
+}
+
+// To override the height attribute of image tags
+// and make the image dynamically sized
+.owl-carousel .owl-item img {
+    height: 100%;
+}

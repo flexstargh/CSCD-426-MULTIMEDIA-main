@@ -1,0 +1,173 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+@use '../base/colors' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.footer {
+    padding-top: 3rem;
+    background: $clr-primary;
+    font-size: rem(14);
+    color: $clr-white;
+
+    &__top-section {
+        @include mq(xsmall) {
+            display: grid;
+            gap: 1.5em;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr 1fr;
+        }
+
+        @include mq(medium) {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 1fr .6fr;
+        }
+
+        @include mq(large) {
+            grid-template-columns: repeat(4, .6fr) 1fr;
+            grid-template-rows: 1fr;
+        }
+    }
+
+    &__col {
+
+        &-item {
+            padding: .3em 0;
+            width: max-content;
+            
+            a {
+                display: inline-block;
+                width: 100%;
+                color: $clr-primary-v-light;
+                font-size: rem(14);
+                @include hover-right-shift;
+
+            }
+        }
+    }
+
+    &__col:not(:nth-child(1)) {
+        .footer__heading {
+            padding-top: 1.6em;
+
+            @include mq(xsmall) {
+                padding-top: 0;
+            }
+        }
+    }
+
+    &__col:first-child {
+        @include mq(xsmall) {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+    }
+
+    &__col:nth-child(2) {
+        @include mq(xsmall) {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+    }
+
+    &__col:nth-child(3) {
+        @include mq(xsmall) {
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+        }
+    }
+
+    &__col:nth-child(4) {
+        @include mq(xsmall) {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+        }
+
+        @include mq(medium) {
+            grid-column: 4 / 5;
+            grid-row: 1 / 2;
+        }
+    }
+    
+    &__col:last-child {
+        // outline: 1px solid red;
+        
+        @include mq(xsmall) {
+            grid-column: 2 / 4;
+            grid-row: 2 / 3;
+        }
+        
+        @include mq(medium) {
+            grid-column: 1 / 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            // outline: 1px solid black;
+        }
+
+        @include mq(large) {
+            display: block;
+            grid-column: 5 / 6;
+            grid-row: 1 / 2;
+        }
+    }
+    
+    &__heading {
+        font-size: rem(18);
+        font-weight: 500;
+        padding-bottom: .8rem;
+    }
+
+    .newsletter-desc,
+    .privacy-policy {
+        font-size: rem(14);
+        color: $clr-primary-v-light;
+    }
+
+    .privacy-policy {
+        a {
+            color: inherit;
+            text-decoration: underline;
+            font-style: italic;
+        }
+    }
+
+    &__middle-section {
+        padding-top: 2rem;
+        margin-top: 3rem;
+        border-top: 1px solid rgba($clr-primary-v-light, .3);
+        
+        .copyright {
+            padding-top: .6em;
+            text-align: center;
+            color: $clr-primary-v-light;
+            
+            span {
+                color: $clr-white;
+                font-weight: 500;
+            }
+        }
+    } 
+
+    &__payments-wrapper {
+        @include flex-center;
+    }
+    
+    &__bottom-section {
+        background: $clr-primary-dark;
+        padding: 1rem 0;
+        margin-top: 1rem;
+        color: $clr-primary-v-light;
+        text-align: center; 
+
+        a {
+            color: $clr-white;
+            &:hover {
+                color: $clr-accent-hover;
+            }
+        }
+    }
+
+}

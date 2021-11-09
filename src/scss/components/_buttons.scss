@@ -1,0 +1,248 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+@use '../base/colors' as *;
+
+%button {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: rem(13);
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: rem(1);
+    border-radius: $border-radius-2;
+}
+
+.nav-btns {
+    @include flex-sp-between;
+    position: absolute;
+    @include left-50;
+    bottom: 5%;
+    width: rem(60);
+    z-index: 99;
+
+    span {
+        @include size(rem(6));
+        border-radius: 50%;
+        background: rgba($clr-white, 0.4);
+        cursor: pointer;
+        transition: all 0.4s;
+
+        &.active {
+            width: rem(35);
+            border-radius: rem(15);
+            background: $clr-white;
+        }
+    }
+}
+
+.hero__cta {
+    @extend %button;
+
+    position: relative;
+    padding: 1em 3em;
+    margin-top: 2em; /*TODO: increase based on device width */
+    background: $clr-accent;
+    overflow: hidden;
+
+    // used a pseudo element for hover event because transition
+    // will be overridden by a utility class that will be added later
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        background-color: mix(black, $clr-accent, 20%);
+        transition: opacity 0.4s;
+        z-index: -1;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+}
+
+.hero__f-card-cta,
+.hero__f-card-cta--sidebar {
+    @extend %button;
+
+    position: absolute;
+    @include left-50;
+    bottom: 7%;
+    color: $clr-white;
+    border: 2px solid $clr-white;
+    padding: 0.7em 3.5em;
+    z-index: 1;
+    transition: background-color 0.4s, color 0.4s;
+
+    &:hover {
+        background: $clr-white;
+        color: $clr-black;
+    }
+}
+
+.hero__f-card-cta--sidebar {
+    bottom: 15%;
+    font-size: rem(14);
+    background: rgba($clr-white, 0.2);
+
+    &:hover {
+        color: $clr-white;
+        background: none;
+    }
+}
+
+.product-card-cta {
+    @extend %button;
+
+    display: block;
+    padding: 0.7em 1.5em;
+    margin-top: 0.5em;
+    background: $clr-accent;
+    font-size: rem(12);
+    border-radius: rem(3);
+    transition: background-color 0.4s, transform 0.2s ease-out, opacity 0.2s ease-out;
+
+    &:hover {
+        background: mix(black, $clr-accent, 5%);
+    }
+}
+
+// Modifying Owl Library buttons
+.owl-next {
+    right: -7%;
+
+    @include mq(small) {
+        right: -5%;
+    }
+
+    @include mq(large) {
+        right: -3%;
+    }
+}
+
+.owl-prev {
+    left: -7%;
+
+    @include mq(small) {
+        left: -5%;
+    }
+
+    @include mq(large) {
+        left: -3%;
+    }
+}
+
+.owl-next,
+.owl-prev {
+    border-radius: 50%;
+    @include top-50;
+
+    &:hover {
+        background: none !important;
+    }
+
+    span {
+        background: rgba($clr-gray, 0.5);
+        border-radius: 50%;
+        font-size: 2rem;
+        // padding: .1em .5em; // I think they too big
+        padding: 0 0.4em;
+        color: rgba($clr-white, 0.8);
+
+        &:hover {
+            background: $clr-accent-hover !important;
+        }
+    }
+}
+
+.owl-dots {
+    display: none !important;
+}
+
+.owl-nav {
+    margin: 0 !important;
+}
+
+.top-deals__product-cards,
+.top-featured__top-cards,
+.top-featured__bottom-cards,
+.top-selling__product-cards,
+.recommended__cards,
+.brands__cards {
+    @media (hover: hover) {
+        .owl-next,
+        .owl-prev {
+            opacity: 0 !important;
+            transition: opacity 0.3s;
+        }
+
+        &:hover {
+            .owl-next,
+            .owl-prev {
+                opacity: 1 !important;
+            }
+        }
+    }
+
+    .owl-next {
+        right: -6%;
+
+        @include mq(xsmall) {
+            right: -5%;
+        }
+
+        @include mq(small) {
+            right: -3.5%;
+        }
+
+        @include mq(medium) {
+            right: -2.5%;
+        }
+    }
+
+    .owl-prev {
+        left: -6%;
+
+        @include mq(xsmall) {
+            left: -5%;
+        }
+
+        @include mq(small) {
+            left: -3.5%;
+        }
+
+        @include mq(medium) {
+            left: -2.5%;
+        }
+    }
+}
+
+.header__sidebar {
+    &-menu-btn {
+        height: 100%;
+        flex-basis: 10%;
+        padding: 0.6rem 0.8rem;
+        border: 1px solid;
+        cursor: pointer;
+    }
+
+    &-menu-btn:nth-child(1) {
+        opacity: 0;
+        pointer-events: none;
+        border-color: transparent rgba($clr-gray, 0.2) transparent transparent;
+
+        &.active {
+            pointer-events: all;
+            opacity: 1;
+        }
+    }
+
+    &-menu-btn:nth-child(3) {
+        border-color: transparent transparent transparent rgba($clr-gray, 0.2);
+    }
+}

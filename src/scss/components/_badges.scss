@@ -1,0 +1,70 @@
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+@use '../base/colors' as *;
+
+.nav-badge {
+    position: absolute;
+    top: -25%;
+    right: -25%;
+    background: $clr-accent;
+    font-size: rem(13);
+    padding: 0.05em 0.4em;
+    border-radius: 50%;
+
+    @include mq(medium) {
+        top: -8%;
+        right: -3%;
+    }
+}
+
+.hero__f-card-badge,
+.hero__f-card-badge--left {
+    position: absolute;
+    top: 10%;
+    @include left-50;
+    background: $clr-accent;
+    padding: 0.2em 0.8em;
+    color: $clr-black;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: rem(13);
+    border-radius: $border-radius-2;
+    z-index: 1;
+}
+
+.hero__f-card-badge--left {
+    top: 5%;
+    left: 5%;
+    transform: translateX(0);
+    border-radius: rem(3);
+}
+
+.discount-badge,
+.sold-out-badge,
+.hot-badge {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    font-size: rem(12);
+    border-radius: $border-radius-2;
+    z-index: 1;
+}
+
+.discount-badge {
+    padding: 0.2em 1em;
+    background: $clr-success;
+    color: $clr-white;
+}
+
+.sold-out-badge {
+    padding: 0.2em 0.5em;
+    color: $clr-white;
+    background: $clr-black;
+}
+
+.hot-badge {
+    padding: 0.2em 1em;
+    color: $clr-white;
+    background: $clr-danger;
+}

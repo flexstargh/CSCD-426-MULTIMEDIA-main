@@ -1,0 +1,11 @@
+.sass-cache/
+.cache/
+*.css.map
+*.sass.map
+*.scss.map
+node_modules
+todo.md
+*.mp4
+
+dist/
+dist/*

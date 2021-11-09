@@ -1,0 +1,26 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/functions' as *;
+@use '../base/colors' as *;
+
+.preloader{
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: white;
+
+    &__text, &__img-wrapper{
+        @include top-left-50;
+    }
+
+    &__img-wrapper{
+        min-width: rem(375);
+    }
+
+    &__text{
+        animation: fade-in-out 2s linear infinite;
+        color: $clr-black;
+        font-family: Verdana, Geneva, Tahoma, sans-serif; // prevented using the site's font in case it hadn't loaded yet
+        font-weight: 500;
+    }
+    
+}

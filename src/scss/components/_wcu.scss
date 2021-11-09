@@ -1,0 +1,122 @@
+// -------------------------------------------------
+// Contains styles for the Why Choose Us component
+// -------------------------------------------------
+@use '../base/colors' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.wcu{
+    margin-top: 1.8rem;
+    
+    &__content {
+        background: $clr-white;        
+        padding: 1rem .9rem;
+        border-radius: $border-radius;
+
+        
+        @include mq(xsmall) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 1rem;
+            row-gap: .8rem;
+            padding-left: 2.5rem;
+        }
+
+        @media screen and (max-width: 35.5em) and (orientation: landscape) {
+            // to look better on small phones in landscape
+            padding-inline: 1rem;
+        }
+        
+        @include mq(medium) {
+            display: flex;
+            padding-left: .9rem;
+        }
+
+        @include mq(max) {
+            padding-block: 1.5rem; 
+        }
+    }
+
+    &__reason {
+        gap: .8rem;
+        width: 100%;
+        position: relative;
+        padding: .5rem 0;
+        margin: 0 auto;
+        // border: 1px solid;
+
+        @include mq(xsmall) { 
+            width: 90%;
+            margin: 0;
+            // border: 1px solid yellow;
+
+            &:not(:nth-child(2), :nth-child(4))::before {
+                @include pseudo;
+                top: 0;
+                right: -10%;
+                @include size(rem(1), 90%);
+                background: rgba($clr-gray, .2);
+            }
+        }
+
+        @include mq(medium) {
+            flex-basis: 100%;
+
+            &::before {
+                display: none;
+            }
+
+            &::after {
+                @include pseudo;
+                @include top-50;
+                right: 0;
+                @include size(rem(1), 80%);
+                background: rgba($clr-gray, .2);
+            }
+
+            &:nth-child(5)::after {
+                display: none;
+            }
+        }
+    }
+
+    &__text-content {
+        @include flex-sp-between;
+        flex-direction: column;
+        width: 100%;
+
+        @include mq(small) {
+            width: 90%;
+        }
+    }
+
+    &__text-content:nth-child(1), 
+    &__text-content:nth-child(2) { //fixes all the space problems even though just 2 are specified here...
+        justify-content: space-evenly;
+    }
+
+    &__top-text {
+        text-transform: uppercase;
+        font-size: rem(13);
+        font-weight: 500;
+        width: 100%;
+        // border: 1px solid;
+        
+        @include mq(small) {
+            width: 90%;
+        }
+    }
+
+    &__bottom-text {
+        font-size: rem(13);
+        color: $clr-gray;
+        width: 90%;
+    }
+
+    &__icon {
+        stroke: $clr-primary;
+        fill: $clr-primary;
+        width: rem(40);
+    }
+}
